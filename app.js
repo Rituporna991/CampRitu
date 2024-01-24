@@ -27,7 +27,7 @@ const reviewRoutes = require('./routes/reviews');
 
 const Review=require('./models/review');
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp',{
+await mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp',{
     useNewUrlParser:true,
     // useCreateIndex:true,
     useUnifiedTopology:true,
