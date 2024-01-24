@@ -55,6 +55,7 @@ async function connectToDatabase() {
         console.log('Database connected');
     } catch (error) {
         console.error('Connection error:', error);
+        console.log(process.env.MONGODB_CONNECT_URL)
     }
 }
 
