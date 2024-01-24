@@ -32,6 +32,13 @@ const seedDB=async()=>{
         // image:'https://source.unsplash.com/collection/483251',
         description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio velit error quam. Libero ipsa blanditiis perspiciatis amet nobis vero dignissimos odit, cum expedita accusamus a ex perferendis rerum reprehenderit reiciendis?",
         price,
+        geometry: {
+            type: "Point",
+            coordinates: [
+                cities[random1000].longitude,
+                cities[random1000].latitude,
+            ]
+        },
         images: [
             {
                 url: 'https://res.cloudinary.com/douqbebwk/image/upload/v1600060601/YelpCamp/ahfnenvca4tha00h2ubt.png',
