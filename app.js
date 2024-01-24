@@ -27,19 +27,38 @@ const reviewRoutes = require('./routes/reviews');
 
 const Review=require('./models/review');
 mongoose.set('strictQuery', true);
-await mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp',{
-    useNewUrlParser:true,
-    // useCreateIndex:true,
-    useUnifiedTopology:true,
-    // useFindAndModify: false
-});
+// mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp',{
+//     useNewUrlParser:true,
+//     // useCreateIndex:true,
+//     useUnifiedTopology:true,
+//     // useFindAndModify: false
+// });
 
-const db=mongoose.connection;
-db.on("error",console.error.bind(console,"connection error:"));
-db.once("open",()=>{
-    console.log('Database connected');
-});
 
+// const db=mongoose.connection;
+// db.on("error",console.error.bind(console,"connection error:"));
+// db.once("open",()=>{
+//     console.log('Database connected');
+// });
+
+async function connectToDatabase() {
+    try {
+        await mongoose.connect(process.env.MONGODB_CONNECT_URL, {
+            useUnifiedTopology: true,
+            useNewUrlParser: true, 
+            // useNewUrlParser: true,
+            // useCreateIndex: true,
+            // useUnifiedTopology: true,
+            // useFindAndModify: false
+        });
+
+        console.log('Database connected');
+    } catch (error) {
+        console.error('Connection error:', error);
+    }
+}
+
+connectToDatabase();
 const app=express();
 app.engine('ejs',ejsMate);
 
