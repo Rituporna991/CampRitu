@@ -28,6 +28,12 @@ const reviewRoutes = require('./routes/reviews');
 const Review=require('./models/review');
 mongoose.set('strictQuery', true);
 mongoose.set('bufferCommands', true);
+app.use('/',userRoutes);
+app.use('/campgrounds',campgroundRoutes)
+app.use('/campgrounds/:id/reviews',reviewRoutes);
+app.get('/',(req,res)=>{
+    res.render('home');
+})
 // mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp',{
 //     useNewUrlParser:true,
 //     // useCreateIndex:true,
@@ -177,12 +183,12 @@ const validateReview=(req,res,next)=>{
     }
 }
 
-app.use('/',userRoutes);
-app.use('/campgrounds',campgroundRoutes)
-app.use('/campgrounds/:id/reviews',reviewRoutes);
-app.get('/',(req,res)=>{
-    res.render('home');
-})
+// app.use('/',userRoutes);
+// app.use('/campgrounds',campgroundRoutes)
+// app.use('/campgrounds/:id/reviews',reviewRoutes);
+// app.get('/',(req,res)=>{
+//     res.render('home');
+// })
 
 
 // app.post('/campgrounds/:id/reviews',validateReview,catchAsync(async(req,res)=>{
