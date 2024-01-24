@@ -28,6 +28,7 @@ const reviewRoutes = require('./routes/reviews');
 const Review=require('./models/review');
 mongoose.set('strictQuery', true);
 mongoose.set('bufferCommands', true);
+const app=express();
 app.use('/',userRoutes);
 app.use('/campgrounds',campgroundRoutes)
 app.use('/campgrounds/:id/reviews',reviewRoutes);
@@ -67,7 +68,7 @@ async function connectToDatabase() {
 }
 
 connectToDatabase();
-const app=express();
+
 app.engine('ejs',ejsMate);
 
 app.set('view engine','ejs');
